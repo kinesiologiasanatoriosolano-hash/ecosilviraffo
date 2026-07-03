@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="Carpeta compartida (bridge SMB)" android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre de la carpeta compartida">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtShareName"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Usuario">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtShareUser"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Contrasena">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtSharePassword"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView android:id="@+id/txtDeviceIp"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:textStyle="bold"
+            android:text="IP del tablet: (detectando...)" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchAutoStart"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Iniciar bridge automaticamente al encender el tablet" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD" android:layout_marginVertical="16dp"/>
+
+        <TextView style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="Google Drive" android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchDriveEnabled"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Habilitar Google Drive" />
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchDriveAutoUpload"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Subir automaticamente al recibir" />
+        <Button android:id="@+id/btnConnectDrive"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Conectar cuenta de Google" android:layout_marginTop="8dp" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD" android:layout_marginVertical="16dp"/>
+
+        <TextView style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="Telegram" android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchTelegramEnabled"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Habilitar Telegram" />
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchTelegramAutoSend"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Enviar automaticamente al recibir" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Bot Token">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtTelegramToken"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Chat ID">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtTelegramChatId"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD" android:layout_marginVertical="16dp"/>
+
+        <TextView style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="Email" android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchEmailEnabled"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Habilitar Email" />
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchEmailAutoSend"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Enviar automaticamente al recibir" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Servidor SMTP">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtSmtpServer"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Puerto SMTP">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtSmtpPort"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Usuario / correo">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtEmailUser"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Contrasena (App Password)">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtEmailPassword"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Destinatario por defecto">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtEmailRecipient"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD" android:layout_marginVertical="16dp"/>
+
+        <TextView style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="Informe" android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre de la clinica">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtClinicName"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre del profesional">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtDoctorName"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Matricula">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtDoctorLicense"
+                android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button android:id="@+id/btnSave"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" android:text="Guardar y reiniciar bridge" />
+
+    </LinearLayout>
+</ScrollView>

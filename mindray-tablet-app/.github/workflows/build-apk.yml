@@ -1,0 +1,39 @@
+name: Compilar APK
+
+# Se ejecuta automaticamente cada vez que subis/actualizas codigo en la
+# rama "main", y tambien se puede disparar a mano desde la pestana
+# "Actions" del repositorio (boton "Run workflow").
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Instalar Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.7
+
+      - name: Compilar APK de depuracion (instalable directo)
+        run: gradle assembleDebug --stacktrace
+
+      - name: Publicar el APK como descargable
+        uses: actions/upload-artifact@v4
+        with:
+          name: mindray-receiver-apk
+          path: app/build/outputs/apk/debug/*.apk

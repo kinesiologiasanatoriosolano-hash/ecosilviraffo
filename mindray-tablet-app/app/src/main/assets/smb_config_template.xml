@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Plantilla de configuracion de JFileServer (org.filesys:jfileserver).
+
+  IMPORTANTE PARA QUIEN COMPILE ESTE PROYECTO:
+  La sintaxis exacta de este XML corresponde al formato documentado por el
+  proyecto JFileServer (heredado de JLAN/Alfresco-JLAN). Verificar contra
+  la documentacion oficial antes de la primera compilacion, ya que puede
+  variar levemente entre versiones de la libreria:
+      https://filesys.org/wiki/index.php/Configuring_JFileServer
+      https://github.com/FileSysOrg/jfileserver
+
+  Los valores entre llaves dobles ({{...}}) se reemplazan en tiempo de
+  ejecucion desde SmbBridgeService.kt antes de cargar este archivo.
+-->
+<fileserver>
+
+    <servers>
+        <SMB platforms="Linux" />
+    </servers>
+
+    <SMB>
+        <host name="{{HOST_NAME}}" domain="WORKGROUP">
+            <broadcast>AUTO</broadcast>
+            <smbdialects>SMB1</smbdialects>
+            <comment>Mindray Receiver - carpeta de recepcion de ecografias</comment>
+            <tcpipSMB port="{{SMB_PORT}}" />
+            <disableNetBIOS />
+        </host>
+    </SMB>
+
+    <shares>
+        <diskshare name="{{SHARE_NAME}}">
+            <driver>org.filesys.server.filesys.disk.JavaFileDiskDriver</driver>
+            <LocalPath>{{LOCAL_PATH}}</LocalPath>
+            <comment>Carpeta de recepcion del ecografo Mindray V6</comment>
+        </diskshare>
+    </shares>
+
+    <security>
+        <authenticator type="local">
+            <users>
+                <user name="{{USER_NAME}}">
+                    <password>{{USER_PASSWORD}}</password>
+                </user>
+            </users>
+        </authenticator>
+    </security>
+
+    <debug>
+        <output>
+            <console />
+        </output>
+        <level>Error</level>
+    </debug>
+
+</fileserver>
