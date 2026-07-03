@@ -37,6 +37,11 @@ android {
 
     packaging {
         resources.excludes.add("META-INF/*")
+        jniLibs {
+            excludes += "**/libicmp_helper.so"
+            excludes += "**/linux-x86/**"
+            excludes += "**/linux-x86_64/**"
+        }
     }
 }
 
@@ -64,7 +69,13 @@ dependencies {
     implementation("com.github.topjohnwu.libsu:core:5.2.2")
 
     // --- Servidor SMB embebido (JFileServer, fork de JLAN) ---
-    implementation("org.filesys:jfileserver:1.4.0")
+    // Se excluye "hazelcast" (dependencia transitiva usada solo para
+    // clustering multi-nodo, que no necesitamos en un bridge standalone
+    // de un solo tablet) porque incluye binarios nativos compilados para
+    // Linux de escritorio (linux-x86) que rompen el empaquetado de Android.
+    implementation("org.filesys:jfileserver:1.4.0") {
+        exclude(group = "com.hazelcast")
+    }
 
     // --- Red / HTTP (Telegram Bot API, llamadas REST simples) ---
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
