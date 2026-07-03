@@ -26,7 +26,7 @@ class MindrayApp : Application() {
         // Configuracion global de libsu: reutiliza una unica shell root,
         // con timeout generoso porque el primer pedido de "su" puede tardar
         // si el usuario debe confirmar en la UI de Magisk.
-        Shell.enableVerboseLogging = BuildConfig_DEBUG
+        Shell.enableVerboseLogging = false
         Shell.setDefaultBuilder(
             Shell.Builder.create()
                 .setFlags(Shell.FLAG_REDIRECT_STDERR)
@@ -62,8 +62,3 @@ class MindrayApp : Application() {
         }
     }
 }
-
-// Pequeno helper para no depender directamente de BuildConfig.DEBUG en este
-// archivo (evita problemas de import segun variante de build configurada).
-private val BuildConfig_DEBUG: Boolean
-    get() = com.sonocare.mindrayreceiver.BuildConfig.DEBUG
